@@ -5,7 +5,7 @@ Solve dependencies in client and server folders:
 `npm install`
 
 In client terminal:
-`npm start`
+`npm run start`
   
 In server terminal:
-`npm run server`
+`npm run start`
