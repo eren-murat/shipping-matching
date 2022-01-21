@@ -13,15 +13,15 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-class TrucksList extends React.Component {
+class RequestsList extends React.Component {
 	state = {
-		trucks: []
+		requests: []
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:4000/offers')
+		axios.get('http://localhost:4000/requests')
 		.then((response) => response.data)
-		.then(response => this.setState({trucks: response}));
+		.then(response => this.setState({requests: response}));
 	}
 
 	render() {
@@ -33,38 +33,34 @@ class TrucksList extends React.Component {
 					<TableHead>
 					<TableRow>
 						<TableCell>User</TableCell>
+						<TableCell align="right">Goods</TableCell>
 						<TableCell align="right">Start</TableCell>
 						<TableCell align="right">End</TableCell>
 						<TableCell align="right">Start</TableCell>
 						<TableCell align="right">End</TableCell>
-						<TableCell align="right">Truck</TableCell>
 						<TableCell align="right">Volume</TableCell>
-						<TableCell align="right">Size</TableCell>
 						<TableCell align="right">Weight</TableCell>
-						<TableCell align="right">Price1</TableCell>
-						<TableCell align="right">Price2</TableCell>
+						<TableCell align="right">Budget</TableCell>
 						<TableCell align="right">Phone</TableCell>
 						<TableCell align="right">Email</TableCell>
 
 					</TableRow>
 					</TableHead>
 					<TableBody>
-					{this.state.trucks.map((row) => (
+					{this.state.requests.map((row) => (
 						<TableRow
 							key={row.Id}
 							sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 						>
 							<TableCell component="th" scope="row">{row.Username}</TableCell>
+							<TableCell align="right">{row.GoodsType}</TableCell>
 							<TableCell align="right">{row.StartLocation}</TableCell>
 							<TableCell align="right">{row.EndLocation}</TableCell>
-							<TableCell align="right">{Moment(row.StartDate).format('D/M/YY')}</TableCell>
-							<TableCell align="right">{Moment(row.EndDate).format('D/M/YY')}</TableCell>
-							<TableCell align="right">{row.TruckType}</TableCell>
+							<TableCell align="right">{Moment(row.StartDateMax).format('D/M/YY')}</TableCell>
+							<TableCell align="right">{Moment(row.EndDateMax).format('D/M/YY')}</TableCell>
 							<TableCell align="right">{row.Volume}</TableCell>
-							<TableCell align="right">{row.Dimensions}</TableCell>
 							<TableCell align="right">{row.Weight}</TableCell>
-							<TableCell align="right">{row.PriceEmpty}</TableCell>
-							<TableCell align="right">{row.PriceLoaded}</TableCell>
+							<TableCell align="right">{row.Budget}</TableCell>
 							<TableCell align="right">{row.PhoneNumber}</TableCell>
 							<TableCell align="right">{row.Email}</TableCell>
 						</TableRow>
@@ -77,4 +73,4 @@ class TrucksList extends React.Component {
 	}
 }
 
-export default TrucksList
+export default RequestsList

@@ -7,15 +7,18 @@ const app = express();
 
 app.use(cors());
 
-app.get('/trucks', (req, res) => {
-    dbOperation.getTrucks()
+app.get('/offers', (req, res) => {
+    dbOperation.getOffers()
     .then(response => {
         res.send(response.recordset);
     })
 })
 
-app.get('/goods', (req, res) => {
-    res.send('list of the goods')
+app.get('/requests', (req, res) => {
+    dbOperation.getRequests()
+    .then(response => {
+        res.send(response.recordset);
+    })
 })
 
 
